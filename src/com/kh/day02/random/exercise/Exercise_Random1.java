@@ -30,7 +30,7 @@ public class Exercise_Random1 {
 			if(num == rand.nextInt(2)+1) {
 				System.out.println("맞췄습니다.");
 			} else System.out.println("틀렸습니다.");
-			System.out.println("종료하려면 0 입력");
+			System.out.println("종료하려면 숫자 0 입력");
 		}
 	}
 }
