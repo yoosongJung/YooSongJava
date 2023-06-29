@@ -9,18 +9,16 @@ public class Run {
 	public static void main(String [] args)
 	{
 		Exercise_Array1 exArr = new Exercise_Array1();
-//		exArr.exercise1();
-//		exArr.exercise2();
-//		exArr.arrayCopyExercise();
-//		exArr.lottoExercise();
+
+		exArr.practice9();
 		
 		Exercise_For exFor = new Exercise_For();
-//		exFor.part2For2();
+//		exFor.part2For7();
 		
 		Exercise_DimArray exDim = new Exercise_DimArray();
 //		exDim.exercise5();
 		
 		Exercise_Exception excp = new Exercise_Exception();
-		excp.practice2();
+//		excp.exercise4();
 	}
 }
