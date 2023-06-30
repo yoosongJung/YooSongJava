@@ -251,12 +251,90 @@ public class Exercise_Array1 {
 		}
 		if(count == 1) System.out.println(chickName + "치킨 배달 가능");
 		else System.out.println(chickName + "치킨은 없는 메뉴입니다.");
+	}
+
+	public void practice10() {
+		//주민등록번호 성별자리 이후부터 *로 가리고 출력하세요.
+		//단, 원본 배열 값은 변경 없이 배열 복사본으로 변경하세요.
+		
+		char [] origin = new char[14];
+		Scanner sc = new Scanner(System.in);
+		System.out.print("주민등록번호(-포함) : ");
+		String memberNum = sc.next();
+		for(int i = 0; i < origin.length; i++) {
+			origin[i] = memberNum.charAt(i);
+		}
+		char [] copy = new char[14];
+		for(int i = 0; i < origin.length; i++) {
+			if(i < 8) {
+				copy[i] = origin[i];
+			} else {
+				copy[i] = '*'; 
+			}
+		}
+		
+		for(int i = 0; i <copy.length; i++) {
+			System.out.print(copy[i]);
+		}
 		
 	}
 	
+	public void practice11() {
+		//로또 번호 자동 생성기 프로그램을 작성하는데 중복 값 없이 
+		//오름차순으로 정렬하여 출력하세요.
+		
+		Random rand = new Random();
+		int [] lotto = new int[6];
+		for(int i = 0; i < lotto.length; i++) {
+			lotto[i] = rand.nextInt(45)+ 1;
+			for(int j = 0; j < i; j++) {
+				if(lotto[j] == lotto[i]) {
+					i--;
+					continue;
+				}
+			}
+		}
+		
+		for(int i = 0; i < lotto.length-1; i++) {
+			for(int j = 0; j < lotto.length-1-i; j++) {
+				if(lotto[j] > lotto[j+1]) {
+					int temp = lotto[j+1];
+					lotto[j+1] = lotto[j];
+					lotto[j] = temp;
+				}
+			}
+		}
+		
+		for(int i = 0; i < lotto.length; i++) {
+			System.out.print(lotto[i] + " ");
+		}
+	}
 	
-	
-	
+	public void practice12() {
+		//문자열을 입력 받아 문자열에 어떤 문자가 들어갔는지 배열에 저장하고
+		//문자의 개수와 함께 출력하세요.
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("문자열 : ");
+		String sentence = sc.next();
+		char [] basket = new char[sentence.length()];
+		for(int i = 0; i < basket.length; i++) {
+			basket[i] = sentence.charAt(i);
+			
+			int count = 0;
+			for(int j = 0; j < i; j++) {
+				if(basket[j] == basket[i]) {
+					count++;
+				}
+			}
+			if(count == 1) ;
+		}
+		System.out.print("문자열에 있는 문자 : ");
+		for(int i = 0; i < basket.length; i++) {
+			System.out.print(basket[i] + ", ");
+		}
+		System.out.println("\n문자 개수 : " + basket.length);
+	}
 	
 	
 }

@@ -10,7 +10,7 @@ public class Run {
 	{
 		Exercise_Array1 exArr = new Exercise_Array1();
 
-		exArr.practice9();
+		exArr.practice12();
 		
 		Exercise_For exFor = new Exercise_For();
 //		exFor.part2For7();
