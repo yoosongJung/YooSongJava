@@ -1,4 +1,4 @@
-package com.kh.day06.oop.member;
+package com.kh.day07.oop.member;
 
 public class Member {
 	private String name;
