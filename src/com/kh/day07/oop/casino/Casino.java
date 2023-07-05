@@ -11,7 +11,11 @@ public class Casino {
 		return this.money;
 	}
 	
-	public void setMoney(int money) {
-		this.money = money;
+	public void addMoney(int money) {
+		this.money += money;
+	}
+	
+	public void minusMoney(int money) {
+		this.money -= money;
 	}
 }
