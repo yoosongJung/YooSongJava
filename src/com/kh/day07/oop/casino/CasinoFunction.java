@@ -471,8 +471,21 @@ public class CasinoFunction {
 				System.out.println("1. hit");
 				System.out.println("2. stand");
 				System.out.print("선택 : ");
-				
+				int choice = sc.nextInt();
+				if(choice == 2) { //stand
+					stand();
+				} else { // hit
+					hit();
+				}
 			}
 		}
+	}
+	
+	public void hit() {
+		
+	}
+	
+	public void stand() {
+		
 	}
 }
