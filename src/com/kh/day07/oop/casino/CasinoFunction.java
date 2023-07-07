@@ -1,5 +1,7 @@
 package com.kh.day07.oop.casino;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CasinoFunction {
@@ -453,9 +455,24 @@ public class CasinoFunction {
 			
 			String [] deck = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
 			int [] deckSum = {1,2,3,4,5,6,7,8,9,10,10,10,10};
-			int dCard1 = (int)Math.random()*13;
-			int mCard1 = (int)Math.random()*13;
-			int mCard2 = (int)Math.random()*13;
+			
+			List<Integer> dList = new ArrayList<Integer>();
+			List<Integer> mList = new ArrayList<Integer>();
+			List<String> dListStr = new ArrayList<String>();
+			List<String> mListStr = new ArrayList<String>();
+			
+			int dCard1 = (int)(Math.random()*13);
+			int mCard1 = (int)(Math.random()*13);
+			int mCard2 = (int)(Math.random()*13);
+			
+			dList.add(deckSum[dCard1]);
+			mList.add(deckSum[mCard1]);
+			mList.add(deckSum[mCard2]);
+			
+			dListStr.add(deck[dCard1]);
+			mListStr.add(deck[mCard1]);
+			mListStr.add(deck[mCard2]);
+			
 			System.out.println("딜러 : " + deck[dCard1] + "  ?");
 			System.out.println();
 			System.out.println("나 : " + deck[mCard1] + "  " + deck[mCard2]);
@@ -481,22 +498,87 @@ public class CasinoFunction {
 						while(true) {
 							if(dealSum < 17){
 								// 딜러 카드 계속
+								int dCardKeepGoing = (int)(Math.random()*13);
+								dList.add(deckSum[dCardKeepGoing]);
+								dListStr.add(deck[dCardKeepGoing]);
+								System.out.println("딜러 : ");
+								for(int i = 0; i < dListStr.size(); i++) {
+									System.out.print(dListStr.get(i) + "  ");
+								}
+								System.out.println();
+								System.out.println("나 : ");
+								for(int i = 0; i < mListStr.size(); i++) {
+									System.out.print(mListStr.get(i) + "  ");
+								}
+								System.out.println();
 								
+								dealSum += deckSum[dCardKeepGoing];
+								
+								delayOneSec();
+								delayOneSec();
 								
 							} else break finish;
 						}
 						// 딜러 카드 값 비교
+						int mySum = 0;
+						for(int i = 0; i < mList.size(); i++) {
+							mySum += mList.get(i);
+						}
+						if(dealSum > 21) {
+							System.out.println("딜러 BUST. 당신이 이겼습니다. + " + betMoney + " 원");
+							casino.addMoney(betMoney);
+						} else {
+							if(dealSum == mySum) {
+								System.out.println("무승부입니다.");
+							} else if(dealSum < mySum) {
+								System.out.println("당신이 이겼습니다. + " + betMoney + " 원");
+								casino.addMoney(betMoney);
+							} else if(dealSum > mySum) {
+								System.out.println("당신이 졌습니다. - " + betMoney + " 원");
+								casino.minusMoney(betMoney);
+								if(casino.getMoney() == 0) {
+									System.out.println("파산하셨습니다.");
+									goodBye();
+								}
+							}
+						}
 						break end;
 					} else { // hit
-						hit();
+						int mySum = 0;
+						for(int i = 0; i < mList.size(); i++) {
+							mySum += mList.get(i);
+						}
+						int mCardKeepGoing = (int)(Math.random()*13);
+						mList.add(deckSum[mCardKeepGoing]);
+						mListStr.add(deck[mCardKeepGoing]);
+						System.out.println("딜러 : ");
+						for(int i = 0; i < dListStr.size(); i++) {
+							System.out.print(dListStr.get(i) + "  ?");
+						}
+						System.out.println();
+						System.out.println("나 : ");
+						for(int i = 0; i < mListStr.size(); i++) {
+							System.out.print(mListStr.get(i) + "  ");
+						}
+						System.out.println();
+						
+						mySum += deckSum[mCardKeepGoing];
+						
+						delayOneSec();
+						delayOneSec();
+						
+						if(mySum > 21) {
+							System.out.println("You BUST. - " + betMoney + " 원");
+							casino.minusMoney(betMoney);
+							if(casino.getMoney() == 0) {
+								System.out.println("파산하셨습니다.");
+								goodBye();
+							}
+							break end;
+						}
 					}
 				}
 			}
 		}
 	}
-	
-	public void hit() {
-		
-	}
-	
 }
