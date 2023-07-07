@@ -452,6 +452,7 @@ public class CasinoFunction {
 			delayOneSec();
 			
 			String [] deck = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+			int [] deckSum = {1,2,3,4,5,6,7,8,9,10,10,10,10};
 			int dCard1 = (int)Math.random()*13;
 			int mCard1 = (int)Math.random()*13;
 			int mCard2 = (int)Math.random()*13;
@@ -468,14 +469,27 @@ public class CasinoFunction {
 				System.out.println("블랙잭!!! + " + betMoney*1.5 + " 원");
 				casino.addMoney(betMoney+betMoney/2);
 			} else {
-				System.out.println("1. hit");
-				System.out.println("2. stand");
-				System.out.print("선택 : ");
-				int choice = sc.nextInt();
-				if(choice == 2) { //stand
-					stand();
-				} else { // hit
-					hit();
+				end :
+				while(true) {
+					System.out.println("1. hit");
+					System.out.println("2. stand");
+					System.out.print("선택 : ");
+					int choice = sc.nextInt();
+					if(choice == 2) { //stand
+						int dealSum = deckSum[dCard1];
+						finish :
+						while(true) {
+							if(dealSum < 17){
+								// 딜러 카드 계속
+								
+								
+							} else break finish;
+						}
+						// 딜러 카드 값 비교
+						break end;
+					} else { // hit
+						hit();
+					}
 				}
 			}
 		}
@@ -485,7 +499,4 @@ public class CasinoFunction {
 		
 	}
 	
-	public void stand() {
-		
-	}
 }
