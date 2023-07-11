@@ -61,10 +61,26 @@ public class Run {
 				mController.updateMusic(index, music);
 				view.displaySuccess("곡 수정 성공!");
 				break;
-			case 7 : break;
-			case 8 : break;
-			case 9 : break;
-			case 10 : break;
+			case 7 :
+				view.printMessage("========== 곡명 오름차순 정렬 ==========");
+				mController.bubbleSortByTitleASC();
+				view.displaySuccess("정렬 성공! 3번을 눌러 출력해주세요!");
+				break;
+			case 8 :
+				view.printMessage("========== 곡명 내림차순 정렬 ==========");
+				mController.sortByTitleDESC();
+				view.displaySuccess("정렬 성공! 3번을 눌러 출력해주세요!");
+				break;
+			case 9 : 
+				view.printMessage("========== 가수명 오름차순 정렬 ==========");
+				mController.bubbleSortBySingerASC();
+				view.displaySuccess("정렬 성공! 3번을 눌러 출력해주세요!");
+				break;
+			case 10 :
+				view.printMessage("========== 가수명 내림차순 정렬 ==========");
+				mController.sortBySingerDESC();
+				view.displaySuccess("정렬 성공! 3번을 눌러 출력해주세요!");
+				break;
 			case 0 :
 				view.printMessage("프로그램을 종료합니다.");
 				break;

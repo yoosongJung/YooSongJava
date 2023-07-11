@@ -66,4 +66,79 @@ public class MusicController {
 	public void updateMusic(int index, Music music) {
 		mList.set(index, music);
 	}
+	public void bubbleSortByTitleASC() {
+		for(int i = 0; i < mList.size()-1; i++) {
+			for(int j = 0; j < (mList.size()-1)-i; j++) {
+				Music mOne = mList.get(j);
+				Music mTwo = mList.get(j+1);
+				// 결과값이 0 이면 동일함
+				// 결과값이 양수값이면 왼쪽이 순서가 더 큼
+				// 음수값이면 왼쪽이 순서가 작음
+				if(mOne.getTitle().compareTo(mTwo.getTitle()) > 0) {
+					Music temp = mOne;
+					mList.set(j, mTwo);
+					mList.set(j+1, temp);
+				}
+			}
+		}
+	}
+	
+	public void insertionSortByTitleASC() {
+		
+	}
+	
+	public void selectionSortByTitleASC() {
+		
+	}
+	
+	public void sortByTitleDESC() {
+		for(int i = 0; i < mList.size()-1; i++) {
+			for(int j = 0; j < (mList.size()-1)-i; j++) {
+				Music mOne = mList.get(j);
+				Music mTwo = mList.get(j+1);
+				// 결과값이 0 이면 동일함
+				// 결과값이 양수값이면 왼쪽이 순서가 더 큼
+				// 음수값이면 왼쪽이 순서가 작음
+				if(mOne.getTitle().compareTo(mTwo.getTitle()) < 0) {
+					Music temp = mOne;
+					mList.set(j, mTwo);
+					mList.set(j+1, temp);
+				}
+			}
+		}
+	}
+	
+	public void bubbleSortBySingerASC() {
+		for(int i = 0; i < mList.size()-1; i++) {
+			for(int j = 0; j < (mList.size()-1)-i; j++) {
+				Music mOne = mList.get(j);
+				Music mTwo = mList.get(j+1);
+				// 결과값이 0 이면 동일함
+				// 결과값이 양수값이면 왼쪽이 순서가 더 큼
+				// 음수값이면 왼쪽이 순서가 작음
+				if(mOne.getSinger().compareTo(mTwo.getSinger()) > 0) {
+					Music temp = mOne;
+					mList.set(j, mTwo);
+					mList.set(j+1, temp);
+				}
+			}
+		}
+	}
+	
+	public void sortBySingerDESC() {
+		for(int i = 0; i < mList.size()-1; i++) {
+			for(int j = 0; j < (mList.size()-1)-i; j++) {
+				Music mOne = mList.get(j);
+				Music mTwo = mList.get(j+1);
+				// 결과값이 0 이면 동일함
+				// 결과값이 양수값이면 왼쪽이 순서가 더 큼
+				// 음수값이면 왼쪽이 순서가 작음
+				if(mOne.getSinger().compareTo(mTwo.getSinger()) < 0) {
+					Music temp = mOne;
+					mList.set(j, mTwo);
+					mList.set(j+1, temp);
+				}
+			}
+		}
+	}
 }
