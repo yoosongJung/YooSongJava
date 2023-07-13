@@ -25,11 +25,19 @@ public class Run {
 						view.printMessage(motel.getNo() + "번방에는 현재 손님이 있습니다.");
 						break;
 					}
-					mController.checkIn(motel.getNo(), motel);
+					mController.checkInOut(motel.getNo(), motel);
 					view.printMessage(motel.getNo() + "번방에 입실하셨습니다");
 					break;
 				case 2 :
-					
+					allInfo = mController.printAllInfo();
+					motel = view.checkOutRoomNo(allInfo);
+					if(motel == null) break;
+					if(motel.getPossible() == "already") {
+						view.printMessage(motel.getNo() + "번방은 현재 빈 방입니다.");
+						break;
+					}
+					mController.checkInOut(motel.getNo(), motel);
+					view.printMessage(motel.getNo() + "번방에서 퇴실하셨습니다");
 					break;
 				case 3 :
 					allInfo = mController.printAllInfo();

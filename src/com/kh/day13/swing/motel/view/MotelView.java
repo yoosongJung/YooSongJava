@@ -37,6 +37,23 @@ public class MotelView {
 		return motel;
 	}
 	
+	public Motel checkOutRoomNo(List<Motel> allList) {
+		Motel motel = null;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("몇번방에서 퇴실하시겠습니까?");
+		int roomNo = sc.nextInt();
+		if(roomNo > 0 && roomNo < 11) {
+			if(allList.get(roomNo-1).getPossible() == "book") {
+				motel = new Motel(roomNo, "empty");
+			} else if(allList.get(roomNo-1).getPossible() == "empty"){
+				motel = new Motel(roomNo, "already");
+			}
+		} else {
+			System.out.println("1~10번방 중 선택하세요.");
+		}
+		return motel;
+	}
+	
 	public void showAllRoom(List<Motel> allList) {
 		int i = 1;
 		for(Motel motel : allList) {
@@ -48,5 +65,4 @@ public class MotelView {
 			i++;
 		}
 	}
-
 }

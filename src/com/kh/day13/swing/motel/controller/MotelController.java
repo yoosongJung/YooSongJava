@@ -18,7 +18,7 @@ public class MotelController {
 		return mList;
 	}
 	
-	public void checkIn(int roomNo, Motel motel) {
+	public void checkInOut(int roomNo, Motel motel) {
 		mList.set(roomNo-1, motel);
 	}
 
